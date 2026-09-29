@@ -1,0 +1,15 @@
+{
+  "name": "2pr",
+  "displayName": "2pr.io",
+  "version": "1.0.0",
+  "description": "Draft LinkedIn posts in your own voice, schedule and publish them, reply to comments, and read your analytics through 2pr.io.",
+  "author": {
+    "name": "2pr.io",
+    "email": "hi@2pr.io",
+    "url": "https://2pr.io"
+  },
+  "homepage": "https://2pr.io/docs/mcp",
+  "repository": "https://github.com/2pr-io/claude-plugin",
+  "license": "MIT",
+  "keywords": ["linkedin", "social-media", "content", "scheduling", "analytics", "ghostwriting"]
+}

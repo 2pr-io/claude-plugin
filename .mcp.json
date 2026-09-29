@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "2pr": {
+      "type": "http",
+      "url": "https://2pr.io/api/mcp"
+    }
+  }
+}
