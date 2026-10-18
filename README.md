@@ -46,3 +46,13 @@ Email [hi@2pr.io](mailto:hi@2pr.io) or visit [2pr.io/contact](https://2pr.io/con
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+## ChatGPT / OpenAI plugin directory
+
+`plugin.json`, `mcp.json` and `assets/` are the OpenAI Agent Plugins package (listing copy, icons and review test cases). Build the upload ZIP from the repo root:
+
+```bash
+zip -X -r 2pr-openai-plugin.zip plugin.json mcp.json skills assets README.md LICENSE
+```
+
+The Claude files (`.claude-plugin/`, `.mcp.json`) stay out of the ZIP.
