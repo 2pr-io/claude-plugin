@@ -9,6 +9,8 @@ Write LinkedIn posts that sound like you, schedule and publish them, answer comm
 - A 2pr.io account on the **Pro** or **Team** plan ([pricing](https://2pr.io/pricing)).
 - Your LinkedIn account connected inside 2pr.io.
 
+New to 2pr.io? [Start a free trial](https://2pr.io/app/login).
+
 The first time Claude calls a 2pr.io tool, a "Sign in with 2pr" window opens (OAuth 2.1). Approve it and you are connected. There is no token to paste, and you can revoke access at any time in 2pr.io under Preferences.
 
 ## What is inside
