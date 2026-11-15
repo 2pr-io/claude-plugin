@@ -11,7 +11,14 @@
   "homepage": "https://2pr.io/docs/mcp",
   "repository": "https://github.com/2pr-io/claude-plugin",
   "license": "MIT",
-  "keywords": ["linkedin", "social-media", "content", "scheduling", "analytics", "ghostwriting"],
+  "keywords": [
+    "linkedin",
+    "social-media",
+    "content",
+    "scheduling",
+    "analytics",
+    "ghostwriting"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -96,6 +103,13 @@
       },
       "publication": {
         "release_notes": "Initial release: draft LinkedIn posts in your voice, schedule and publish to LinkedIn and X, reply to comments, and read analytics."
+      }
+    },
+    "com.nousresearch.hermes": {
+      "servers": {
+        "2pr": {
+          "trust": "untrusted"
+        }
       }
     }
   }
