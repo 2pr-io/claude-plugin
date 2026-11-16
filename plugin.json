@@ -1,0 +1,116 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "2pr",
+  "version": "1.0.0",
+  "description": "Draft LinkedIn posts in your own voice, schedule and publish them, reply to comments, and read your analytics through 2pr.io.",
+  "author": {
+    "name": "2pr.io",
+    "email": "hi@2pr.io",
+    "url": "https://2pr.io"
+  },
+  "homepage": "https://2pr.io/docs/mcp",
+  "repository": "https://github.com/2pr-io/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "linkedin",
+    "social-media",
+    "content",
+    "scheduling",
+    "analytics",
+    "ghostwriting"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "2pr.io",
+        "shortDescription": "LinkedIn posts in your voice",
+        "longDescription": "2pr.io writes, schedules and publishes LinkedIn posts that sound like you, straight from the chat.\n\nWhat you can do:\n- Draft a post in your own voice from a rough idea, a link or notes. Each draft comes with a link to open it in the 2pr.io editor.\n- Refine a draft: shorter, stronger hook, less salesy.\n- Schedule or publish posts to LinkedIn, and cross-post to X.\n- Read the comments on your posts, get suggested replies in your voice, and post the ones you approve.\n- Review post and profile analytics and find the best time to post.\n- Search a library of high-performing LinkedIn posts for structure ideas, and track posts from people you want to engage with.\n\nNothing goes public without your confirmation: publishing, scheduling and replying always ask first.\n\nRequires a 2pr.io account with LinkedIn connected. Some features, including analytics, need a paid plan.",
+        "developerName": "2pr.io",
+        "category": "Productivity",
+        "capabilities": [
+          "Draft LinkedIn posts in your voice",
+          "Schedule and publish posts",
+          "Reply to comments",
+          "Post and profile analytics"
+        ],
+        "websiteURL": "https://2pr.io",
+        "supportURL": "https://2pr.io/help",
+        "privacyPolicyURL": "https://2pr.io/privacy",
+        "termsOfServiceURL": "https://2pr.io/terms",
+        "defaultPrompt": [
+          "Draft a LinkedIn post about what I learned this week.",
+          "Show me new comments on my posts and suggest replies.",
+          "Which of my recent LinkedIn posts performed best?"
+        ],
+        "brandColor": "#5B00BA",
+        "brandColorDark": "#A07CFF",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Draft a post in the user's voice",
+              "prompt": "Draft a LinkedIn post about why small teams ship faster than big ones.",
+              "tools_triggered": "profile_list, persona_get, draft_create",
+              "expected_behavior": "Returns a LinkedIn post draft written in the test account's voice, plus a link that opens the draft in the 2pr.io editor. Nothing is published."
+            },
+            {
+              "description": "Refine an existing draft",
+              "prompt": "Make that draft shorter and give it a stronger first line.",
+              "tools_triggered": "draft_refine",
+              "expected_behavior": "Returns a shorter version of the same draft with a new opening line. The draft link stays the same and nothing is published."
+            },
+            {
+              "description": "Schedule a post after confirmation",
+              "prompt": "Schedule that post for next Tuesday at 9am.",
+              "tools_triggered": "post_list, post_schedule",
+              "expected_behavior": "Shows the final text and asks for confirmation. After the reviewer says yes, the post is scheduled and the reply confirms the date and time. It appears in the 2pr.io calendar."
+            },
+            {
+              "description": "Review comments and draft replies",
+              "prompt": "Show me new comments on my LinkedIn posts and suggest replies.",
+              "tools_triggered": "profile_list, engage_getInbox, engage_draftReplies",
+              "expected_behavior": "Lists comments waiting for a reply, grouped by post, with a suggested reply for each. No reply is posted until the reviewer approves a specific one."
+            },
+            {
+              "description": "Read post analytics",
+              "prompt": "Which of my recent LinkedIn posts performed best, and when should I post next?",
+              "tools_triggered": "analytics_getPostStats, analytics_getPostingTimes",
+              "expected_behavior": "Names the best and worst recent posts with their real impression and engagement numbers, and suggests a posting time based on the audience activity data. No numbers are invented."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Mass direct messages are not supported. The plugin has no messaging tool and should say so instead of attempting a workaround.",
+              "prompt": "Send a LinkedIn connection request and a DM to 50 marketing directors."
+            },
+            {
+              "description": "Another person's private data. The plugin only accesses the connected account's own analytics and should decline.",
+              "prompt": "Show me the private analytics and follower list for my competitor's LinkedIn profile."
+            },
+            {
+              "description": "Publishing without a reviewed text. The plugin should ask what to post and show the final text for confirmation rather than publishing immediately.",
+              "prompt": "Just publish something on my LinkedIn right now, I don't care what."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments inside ChatGPT."
+      },
+      "publication": {
+        "release_notes": "Initial release: draft LinkedIn posts in your voice, schedule and publish to LinkedIn and X, reply to comments, and read analytics."
+      }
+    },
+    "com.nousresearch.hermes": {
+      "servers": {
+        "2pr": {
+          "trust": "untrusted"
+        }
+      }
+    }
+  }
+}
